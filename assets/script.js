@@ -41,13 +41,14 @@ var dateKey = today.format("YYYY-MM-DD");
   
         // submit-btn column added to the same row
         var submitBtnEl = $("<div>")
-        .addClass("col-md-1 submit-btn btn btn-primary saveBtn")
+        .addClass("col-md-1 submit-btn btn btn-primary saveBtn d-flex align-items-center justify-content-center")
         .click(function () {
-          userInput(userInputEl);
-          lockIcon.toggleClass("fa-lock-open fa-lock");
-        }); // click event to the Save button
-        var lockIcon = $("<i>").addClass("fas fa-lock-open");
-        submitBtnEl.append(lockIcon);
+            userInput(userInputEl);
+            lockIcon.toggleClass("locked");
+          }); // click event to the Save button
+          var lockIcon = $("<i>").addClass("fas fa-lock");
+
+          submitBtnEl.append(lockIcon);
         
         submitBtnEl.appendTo(timeblockHTML);
         // Append the row to the timeblocks container
