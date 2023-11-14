@@ -1,5 +1,6 @@
 // check if script.js is connected
 console.log("peanut");
+
 $(document).ready(function () {
     // Display the current day at the top of the calendar when a user opens the planner.
     var currentDay = $("#currentDay");
@@ -23,6 +24,9 @@ $(document).ready(function () {
         // <div> with class row added using bootstrap grid
         var timeblockHTML = $("<div>").addClass("row");
   
+        // NEW DIV element with its inputs LAYOUT IS TAKEN FROM FREECODECAMP.ORG  
+        // COL system added using bootstarp examples  
+
         // Time blocks added to the row
         $("<div>")
           .addClass("col-md-1 hour time-block")
@@ -44,7 +48,7 @@ $(document).ready(function () {
           )
           .click(function () {
             userInput(userInputEl);
-            lockIcon.toggleClass("locked");
+            lockIcon.toggleClass("locked"); // WRITTEN BY EXAMPLE CODE FROM CODEPEN.IO
           }); // click event to the Save button
         var lockIcon = $("<i>").addClass("fas fa-lock");
   
@@ -56,12 +60,12 @@ $(document).ready(function () {
   
         // Stored data retrieved from localStorage and populate user-input field
         var storedKey = i; 
-        var storedValue = localStorage.getItem(storedKey);
+        var storedVal = localStorage.getItem(storedKey);
   
-        if (storedValue !== null) {
-          userInputEl.text(JSON.parse(storedValue));
+        if (storedVal !== null) {
+          userInputEl.text(JSON.parse(storedKey));
         }
-        console.log(storedValue);
+        console.log(storedVal);
       }
       // checking to indicate that the function has been called
       console.log("Time blocks generated successfully");
@@ -93,11 +97,11 @@ $(document).ready(function () {
   
     function userInput(userInputEl) {
       var userInputVal = userInputEl.text().trim();
-      // Get the text content of the closest row hour element within the time block
+      // the text content of the closest row hour element within the time block
       var timeblockHour = userInputEl.closest(".row").find(".hour").text().trim();
-      // create localStorageKey
+      // created localStorageKey
       var localStorageKey = timeblockHour;
-      // Save user input in localStorage
+      // Saved user input in localStorage
       localStorage.setItem(localStorageKey, JSON.stringify(userInputVal));
     }
   });
