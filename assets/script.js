@@ -43,14 +43,16 @@ var dateKey = today.format("YYYY-MM-DD");
         var submitBtnEl = $("<div>")
         .addClass("col-md-1 submit-btn btn btn-primary saveBtn")
         .click(function () {
-        userInput(userInputEl);
+          userInput(userInputEl);
+          lockIcon.toggleClass("fa-lock-open fa-lock");
         }); // click event to the Save button
+        var lockIcon = $("<i>").addClass("fas fa-lock-open");
+        submitBtnEl.append(lockIcon);
+        
         submitBtnEl.appendTo(timeblockHTML);
-  
         // Append the row to the timeblocks container
         timeblockContainer.append(timeblockHTML);
       }
-  
       // checking to indicate that the function has been called
       console.log("Timeblocks generated successfully");
     }
