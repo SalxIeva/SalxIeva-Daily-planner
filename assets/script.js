@@ -31,10 +31,19 @@ $("#currentDay").text(today.format("dddd, MMMM D[th]"));
           .appendTo(timeblockHTML);
   
         // user-input column created to the same row
-        $("<div>").addClass("col-md-10 user-input").appendTo(timeblockHTML);
+        var userInputEl = $("<div>")
+        .addClass("col-md-10 user-input editable")
+        .attr("contenteditable", "true") // to make a text editable
+        .text("")
+        .appendTo(timeblockHTML);
   
         // submit-btn column added to the same row
-        $("<div>").addClass("col-md-1 submit-btn").appendTo(timeblockHTML);
+        var submitBtnEl = $("<div>")
+        .addClass("col-md-1 submit-btn btn btn-primary saveBtn")
+        .click(function () {
+            userInput(userInputElement);
+        }); // Attach the click event to the Save button
+        timeblockHTML.appendTo(submitBtnEl);
   
         // Append the row to the timeblocks container
         timeblockContainer.append(timeblockHTML);
@@ -54,7 +63,6 @@ $(".user-input").each(function() {
     var timeblockHour = parseInt($(this).prev().text().split(":")[0]);
     // if statement created to check if the hour is past/present/future
     if (timeblockHour > currentHour) {
-        // 
         $(this).addClass("past");
     } else if (timeblockHour === currentHour) {
         $(this).addClass("present");
