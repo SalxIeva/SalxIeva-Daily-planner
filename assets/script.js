@@ -7,6 +7,8 @@ var currentDay = $("#currentDay");
 var today = dayjs();
 $("#currentDay").text(today.format("dddd, MMMM D[th]"));
 
+var dateKey = today.format("YYYY-MM-DD");
+
 // Present timeblocks for standard business hours when the user scrolls down.
     // start and end hours
     var startHour = 8;
@@ -41,7 +43,7 @@ $("#currentDay").text(today.format("dddd, MMMM D[th]"));
         var submitBtnEl = $("<div>")
         .addClass("col-md-1 submit-btn btn btn-primary saveBtn")
         .click(function () {
-        userInput(userInputElement);
+        userInput(userInputEl);
         }); // click event to the Save button
         submitBtnEl.appendTo(timeblockHTML);
   
@@ -75,14 +77,18 @@ $(".user-input").each(function() {
 
 // Save the event in local storage when the save button is clicked in that timeblock.
 $("#timeblocks").on("click", ".saveBtn", function () {
-    var userInputElement = $(this).closest(".row").find(".user-input");
-    userInput(userInputElement);
+    var userInputEl = $(this).closest(".row").find(".user-input");
+    userInput(userInputEl);
 });
 
-function userInput(userInputElement) {
-    var userInputVal = userInputElement.text().trim();
-    var timeblockKey = userInputElement.closest(".row").index();
-    localStorage.setItem("event_" + timeblockKey, userInputVal);
+function userInput(userInputEl) {
+    var userInputVal = userInputEl.text().trim();
+    // Get the text content of the closest row hour element within the timeblock
+    var timeblockHour = userInputEl.closest(".row").find(".hour").text().trim();
+    // create localStorageKey
+    var localStorageKey = dateKey + "_" + timeblockHour;
+    // Save user input in localStorage
+    localStorage.setItem(localStorageKey, JSON.stringify(userInputVal));
 }
 // Persist events between refreshes of a page
 });
