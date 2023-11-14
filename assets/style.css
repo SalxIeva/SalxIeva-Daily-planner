@@ -70,3 +70,9 @@ header {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.user-input {
+  font-size: 20px;
+  color: black;
+  padding: 15px;
+}

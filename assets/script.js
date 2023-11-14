@@ -41,9 +41,9 @@ $("#currentDay").text(today.format("dddd, MMMM D[th]"));
         var submitBtnEl = $("<div>")
         .addClass("col-md-1 submit-btn btn btn-primary saveBtn")
         .click(function () {
-            userInput(userInputElement);
-        }); // Attach the click event to the Save button
-        timeblockHTML.appendTo(submitBtnEl);
+        userInput(userInputElement);
+        }); // click event to the Save button
+        submitBtnEl.appendTo(timeblockHTML);
   
         // Append the row to the timeblocks container
         timeblockContainer.append(timeblockHTML);
@@ -74,6 +74,15 @@ $(".user-input").each(function() {
 // Allow a user to enter an event when they click a timeblock
 
 // Save the event in local storage when the save button is clicked in that timeblock.
+$("#timeblocks").on("click", ".saveBtn", function () {
+    var userInputElement = $(this).closest(".row").find(".user-input");
+    userInput(userInputElement);
+});
 
+function userInput(userInputElement) {
+    var userInputVal = userInputElement.text().trim();
+    var timeblockKey = userInputElement.closest(".row").index();
+    localStorage.setItem("event_" + timeblockKey, userInputVal);
+}
 // Persist events between refreshes of a page
 });
