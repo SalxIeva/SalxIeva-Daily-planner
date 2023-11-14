@@ -47,6 +47,21 @@ $("#currentDay").text(today.format("dddd, MMMM D[th]"));
     // Call the function initially
     generateTimeblocks(startHour, endHour, 1);
 // Color-code each timeblock based on past, present, and future when the timeblock is viewed.
+ var currentHour = dayjs().hour();
+// function to go through each hour and check whether its past, present or future time
+$(".user-input").each(function() {
+    // the hour to colorblock is taken from previously set div element with text(time)
+    var timeblockHour = parseInt($(this).prev().text().split(":")[0]);
+    // if statement created to check if the hour is past/present/future
+    if (timeblockHour > currentHour) {
+        // 
+        $(this).addClass("past");
+    } else if (timeblockHour === currentHour) {
+        $(this).addClass("present");
+    } else {
+        $(this).addClass("future");
+    }
+});
 
 // Allow a user to enter an event when they click a timeblock
 
