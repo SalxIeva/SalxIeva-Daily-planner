@@ -18,12 +18,13 @@ $(document).ready(function () {
 
     // Function to display user input from local storage on the page created
     function displayUserVal(userInputEl, localStorageKey) {
+        console.log(localStorage.getItem("10:00"));
         var storedVal = localStorage.getItem(localStorageKey);
 
         if (storedVal !== null) {
             userInputEl.val(storedVal);
         }
-        // console.log(storedVal);
+        console.log(storedVal);
     }
 
     // Function to generate time blocks added including startTime, endTime and time Interval to generate time blocks every 1 hour
@@ -56,8 +57,10 @@ $(document).ready(function () {
                 .prop("disabled", i < currentHour)
                 .appendTo(timeblockHTML);
 
-            var localStorageKey = "timeblock" + i;
+            var localStorageKey = i + ":00";
+            console.log(typeof localStorageKey);
             displayUserVal(userInputEl, localStorageKey);
+            console.log
 
             // submit-btn column added to the same row
             var submitBtnEl = $("<div>")
@@ -115,4 +118,5 @@ $(document).ready(function () {
         // Saved user input in localStorage
         localStorage.setItem(localStorageKey, userInputVal);
     }
+    console.log(localStorage(localStorageKey, userInputVal));
 });
