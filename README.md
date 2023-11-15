@@ -38,4 +38,4 @@ https://salxieva.github.io/SalxIeva-Daily-planner/
 
 ## Screenshot
 
-![image](https://github.com/SalxIeva/SalxIeva-Daily-planner/assets/133906072/13df0391-7694-4530-bdf1-215e5394ccb8)
+![image](https://github.com/SalxIeva/SalxIeva-Daily-planner/assets/133906072/74bf66bf-f809-4af4-8810-2e7e122de567)
