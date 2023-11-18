@@ -15,9 +15,9 @@ N/A
 This project is made to showcase my skills with web API, DOM, user interactions, Dayjs, Jquery.
 
 Timeblocks are set to current time to display color coding:
-past time - green
+past time - grey
 present time - red
-future time - grey
+future time - green
 
 The user can press on the present and future blocks and add the event by pressing save(lock) button.
 The users event will then be saved to local storage.
