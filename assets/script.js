@@ -95,11 +95,11 @@ $(document).ready(function () {
         var timeblockHour = parseInt($(this).prev().text().split(":")[0]);
         // If statement created to check if the hour is past/present/future
         if (timeblockHour > currentHour) {
-            $(this).addClass("past");
+            $(this).addClass("future");
         } else if (timeblockHour === currentHour) {
             $(this).addClass("present");
         } else {
-            $(this).addClass("future");
+            $(this).addClass("past");
         }
     });
 
